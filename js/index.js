@@ -26,12 +26,27 @@ window.onkeydown = function (e) {
 
 }
 
+let obstacle = {
+  x: Math.floor(Math.random() * canvas.width),
+  y: 0,
+  w: 50,
+  h: 5,
+}
+
+function drawObstacle() {
+  ctx.fillStyle = "red"
+  ctx.fillRect(obstacle.x, obstacle.y, obstacle.w, obstacle.h);
+}
+
+
 
 function animate() {
   window.requestAnimationFrame(animate)
   ctx.clearRect(0, 0, canvas.width, canvas.height)
   ctx.drawImage(road, 0, 0, canvas.width, canvas.height)
   drawCar()
+  drawObstacle()
+  obstacle.y += 2
 }
 
 document.getElementById('start-button').onclick = () => {
